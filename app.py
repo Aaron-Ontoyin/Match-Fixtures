@@ -54,17 +54,14 @@ def get_css(table):
 
 
 def get_fixture_img(fixture):
-    if (
-        fixture.team1_score is None
-        or fixture.team2_score is None
-        or fixture.team1_score == fixture.team2_score
-    ):
-        pipe2_color = pipe1_color = "rgb(200, 200, 230)"
+    t1score = fixture.team1_score
+    t2score = fixture.team2_score
 
-    elif fixture.team1_score > fixture.team2_score:
+    if t1score is None or t2score is None or t1score == t2score:
+        pipe2_color = pipe1_color = "rgb(200, 200, 230)"
+    elif t1score > t2score:
         pipe1_color = "green"
         pipe2_color = "red"
-
     else:
         pipe1_color = "red"
         pipe2_color = "green"
@@ -72,11 +69,11 @@ def get_fixture_img(fixture):
     return f"""
             <div class="fixture-container">
                 <div class="fixture-teams">
-                    <span>{fixture.team1 if fixture.team1 else '😎'} <span style="color: {pipe1_color}">|</span> {fixture.team1_score if fixture.team1_score is not None else '-'}</span>
+                    <span>{fixture.team1 if fixture.team1 else '😎'} <span style="color: {pipe1_color}">|</span> {t1score if t1score is not None else '-'}</span>
                     <br>
                     <span>vs</span>
                     <br>
-                    <span>{fixture.team2 if fixture.team2 else '😎'} <span style="color: {pipe2_color}">|</span> {fixture.team2_score if fixture.team2_score is not None else '-'}</span>
+                    <span>{fixture.team2 if fixture.team2 else '😎'} <span style="color: {pipe2_color}">|</span> {t2score if t2score is not None else '-'}</span>
                 </div>
                 <div class="fixture-id">
                     {fixture.id}
@@ -89,9 +86,7 @@ def get_fixtures_display(fixtures):
     fixtures = "".join([get_fixture_img(f) for f in fixtures])
 
     return f"""
-            <div class="fixtures-col">
-            {fixtures}
-            </div>
+            <div class="fixtures-col">{fixtures}</div>
             """
 
 
