@@ -99,7 +99,7 @@ with team_names_tab:
     with cols[1]:
         with st.columns(2)[-1]:
             number_of_teams = st.number_input(
-                "Number of teams", min_value=2, max_value=512, value=16
+                "Number of teams", min_value=4, max_value=512, value=16
             )
             if log10(number_of_teams) / log10(2) % 1 != 0:
                 st.error("Number of teams must be a whole power of 2!", icon="🚫")
