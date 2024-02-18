@@ -89,7 +89,6 @@ def get_fixtures_display(fixtures):
             <div class="fixtures-col">{fixtures}</div>
             """
 
-
 team_names_tab, team_tables_tab = st.tabs(["Team Names", "Table"])
 
 with team_names_tab:
