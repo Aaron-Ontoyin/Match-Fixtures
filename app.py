@@ -6,7 +6,7 @@ import streamlit as st
 from table import FixturesTable, TeamNames
 
 
-st.set_page_config(page_title="UWSU FIFA Tournament", page_icon="🎮", layout="wide")
+st.set_page_config(page_title="Match Fixtures", page_icon="🎮", layout="wide")
 
 if "table" not in st.session_state:
     st.session_state["table"] = None
@@ -15,7 +15,7 @@ if "teams" not in st.session_state:
     st.session_state["teams"] = TeamNames()
 
 
-st.title("UWSU FIFA Tournament")
+st.title("Match Fixtures")
 
 
 def get_css(table):
